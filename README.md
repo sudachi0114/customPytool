@@ -64,5 +64,12 @@ myapp hoge fuga
 # then return ['/usr/local/bin/myapp', 'hoge', 'fuga']
 ```
 
+### Usage of Docker:
+
+```sh
+bash build.sh
+bash run.sh
+```
+
 ## Link
 * [Pythonでグローバルコマンドを含んだパッケージを作る](https://qiita.com/fetaro/items/bb0eb8292127b5d1e9a8)
