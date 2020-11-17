@@ -71,5 +71,39 @@ bash build.sh
 bash run.sh
 ```
 
+#### Usage of Make:
+
+```sh
+# if you want to execute all process and check result:
+make
+
+# want get docker container's console
+make console
+
+# want build docker image 
+make build
+
+# want remove docker image named mypybin (this image)
+make clean
+```
+
+`mypybin` という名前のイメージがある状態で、新たに同名のイメージをビルドすると `<none>:<none>` という名前のついたイメージができてしまうことがあります。
+その場合は下記のようにして、一括削除をすることができます。
+
+```
+# -f (フィルタ) オプションを使い、イメージを抽出することができます。
+docker images -f "dangling=true"
+
+# 先の検索結果を使って一括削除
+docker rmi $(docker images -f "dangling=true" -q)
+
+# docker v1.25 以降では、<none> image 削除用のコマンドが用意されています:
+# cf. https://docs.docker.com/engine/reference/commandline/image_prune/
+docker image prune
+```
+
 ## Link
 * [Pythonでグローバルコマンドを含んだパッケージを作る](https://qiita.com/fetaro/items/bb0eb8292127b5d1e9a8)
+* [Dockerで none なイメージを一括で削除するワンライナー](https://qiita.com/DQNEO/items/e3a03a14beb616630032)
+* [docker image prune](https://docs.docker.com/engine/reference/commandline/image_prune/)
+* [Dockerに<none>:<none>なイメージが生まれてくる理由](https://suin.io/540)
