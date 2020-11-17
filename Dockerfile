@@ -1,7 +1,7 @@
 FROM python:3.8-slim
 
 RUN apt update && \
-	apt install -y vim tree
+    apt install -y vim tree
 
 COPY . /root/
 WORKDIR /root/src/
